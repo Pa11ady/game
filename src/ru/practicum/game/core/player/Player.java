@@ -1,15 +1,15 @@
-package ru.practicum.game.core;
+package ru.practicum.game.core.player;
 
 import ru.practicum.game.core.action.GameAction;
 
 import java.util.List;
 
-public class Player {
+abstract public class Player {
     private int health;
     private final int maxHealth;
     private final String name;
 
-    private final List<GameAction> actions;
+    protected final List<GameAction> actions;
 
     public Player(int health, int maxHealth, String name, List<GameAction> actions) {
         this.health = health;
@@ -29,9 +29,7 @@ public class Player {
         }
     }
 
-    public void act() {
-
-    }
+    abstract public GameAction chooseAction();
 
     public void heal(int heal) {
         if (health <= 0) {

@@ -1,4 +1,7 @@
-package ru.practicum.game;
+package ru.practicum.game.core;
+
+import ru.practicum.game.core.action.GameAction;
+import ru.practicum.game.core.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +22,34 @@ public class GameApp {
     public void start() {
         System.out.println("Start");
         while (!aliveCommandA.isEmpty() && !aliveCommandB.isEmpty()) {
-            playCommand(aliveCommandA);
+            playCommand(aliveCommandA, commandB);
             removeDead(aliveCommandB);
-            playCommand(aliveCommandB);
+            playCommand(aliveCommandB, commandA);
             removeDead(aliveCommandA);
         }
+        System.out.println("Game Over");
     }
 
-    private void playCommand(List<Player> command) {
+    void playCommand(List<Player> command, List<Player> enemies) {
         for (Player player : command) {
-            player.act();
+            GameAction action = player.chooseAction();
+            Player enemy = getEnemy(enemies);
+            if (enemy == null) {
+                return;
+            }
+            action.execute(player,enemy);
         }
     }
 
     private void removeDead(List<Player> command) {
         command.removeIf(p -> !p.isAlive());
+    }
+    private Player getEnemy(List<Player> command) {
+        for (Player player : command) {
+            if (player.isAlive()) {
+                return player;
+            }
+        }
+        return null;
     }
 }

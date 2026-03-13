@@ -1,5 +1,8 @@
 package ru.practicum.game;
 
+import ru.practicum.game.core.GameApp;
+import ru.practicum.game.core.player.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
