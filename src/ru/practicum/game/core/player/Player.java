@@ -1,14 +1,21 @@
-package ru.practicum.game;
+package ru.practicum.game.core;
+
+import ru.practicum.game.core.action.GameAction;
+
+import java.util.List;
 
 public class Player {
     private int health;
-    private int maxHealth;
-    private String name;
+    private final int maxHealth;
+    private final String name;
 
-    public Player(int health, int maxHealth, String name) {
+    private final List<GameAction> actions;
+
+    public Player(int health, int maxHealth, String name, List<GameAction> actions) {
         this.health = health;
         this.maxHealth = maxHealth;
         this.name = name;
+        this.actions = actions;
     }
 
     public void takeDamage(int damage) {
