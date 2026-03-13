@@ -13,6 +13,7 @@ public class AttackAction extends AbstractAction {
     public void execute(Player from, Player to) {
         System.out.println(from.getName() + " атакует " + to.getName());
         to.takeDamage(damage);
+        System.out.println(to.getName() + " здоровье после атаки = " +to.getHealth());
         if (!to.isAlive()) {
             System.out.println(to.getName() + " убит");
         }

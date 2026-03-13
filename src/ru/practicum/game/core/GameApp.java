@@ -24,6 +24,7 @@ public class GameApp {
         while (!aliveCommandA.isEmpty() && !aliveCommandB.isEmpty()) {
             playCommand(aliveCommandA, commandB);
             removeDead(aliveCommandB);
+            System.out.println("\n=====");
             playCommand(aliveCommandB, commandA);
             removeDead(aliveCommandA);
         }

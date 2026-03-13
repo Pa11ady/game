@@ -13,5 +13,6 @@ public class HealAction extends AbstractAction {
     public void execute(Player from, Player to) {
         System.out.println(from.getName() + " лечит себя");
         from.heal(heal);
+        System.out.println(from.getName() + " здоровье лечение = " +from.getHealth());
     }
 }

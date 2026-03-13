@@ -27,9 +27,9 @@ public class HumanPlayer extends Player {
     }
 
     private void printMenu() {
-        System.out.println("Игрок, " + getName() + ", выберите действия" ) ;
+        System.out.println(getName() + ", выберите действия" ) ;
         for (int i = 0; i < actions.size(); i++) {
-            System.out.println("\t" + i + actions.get(i).name());
+            System.out.println("\t" + i + " " + actions.get(i).name());
         }
     }
 }
