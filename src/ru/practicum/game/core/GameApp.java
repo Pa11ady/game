@@ -20,14 +20,20 @@ public class GameApp {
     }
 
     public void start() {
-        System.out.println("Start");
+        System.out.println("Запуск");
         while (!aliveCommandA.isEmpty() && !aliveCommandB.isEmpty()) {
             playCommand(aliveCommandA, commandB);
             removeDead(aliveCommandB);
             playCommand(aliveCommandB, commandA);
             removeDead(aliveCommandA);
         }
-        System.out.println("Game Over");
+        System.out.println("\nКонец игры");
+        System.out.println("*************************");
+        System.out.println("Победил(и)");
+        System.out.println("Игрок\tЗдоровье");
+        print(aliveCommandA);
+        print(aliveCommandB);
+
     }
 
     void playCommand(List<Player> command, List<Player> enemies) {
@@ -51,5 +57,11 @@ public class GameApp {
             }
         }
         return null;
+    }
+
+    private void print(List<Player> command) {
+        for (Player p : command) {
+            System.out.println(p.getName() + "\t" +p.getHealth());
+        }
     }
 }
